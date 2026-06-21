@@ -1,0 +1,58 @@
+info:
+  name: loaddata
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: http://localhost:8000/api.php?apicall=loadData
+  params:
+    - name: apicall
+      value: loadData
+      type: query
+  body:
+    type: multipart-form
+    data:
+      - name: IDMhs
+        type: text
+        value: Kosong
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: loadData
+    request:
+      url: http://localhost:8000/api.php?apicall=loadData
+      method: POST
+      params:
+        - name: apicall
+          value: loadData
+          type: query
+      body:
+        type: multipart-form
+        data:
+          - name: IDMhs
+            type: text
+            value: Kosong
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: host
+          value: localhost:8000
+        - name: date
+          value: Wed, 20 May 2026 02:40:12 GMT
+        - name: connection
+          value: close
+        - name: x-powered-by
+          value: PHP/8.3.12
+        - name: content-type
+          value: text/html; charset=UTF-8
+      body:
+        type: html
+        data: '{"error":false,"message":"success","data":[{"Nim":"240040001","Nama":"Ida Bagus Yoga","Umur":21,"MyFoto":"foto_yoga.jpg"},{"Nim":"240040002","Nama":"Budi Setiawan","Umur":22,"MyFoto":"foto_budi.png"},{"Nim":"240040003","Nama":"Ni Putu Ayu Lestari","Umur":20,"MyFoto":"default.jpg"},{"Nim":"240040004","Nama":"Made Adi Wijaya","Umur":21,"MyFoto":"avatar4.png"},{"Nim":"240040005","Nama":"Siti Aminah","Umur":23,"MyFoto":"avatar5.png"}]}'

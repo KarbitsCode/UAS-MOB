@@ -1,0 +1,82 @@
+info:
+  name: updatedata
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: http://localhost:8000/api.php?apicall=updateData
+  params:
+    - name: apicall
+      value: updateData
+      type: query
+  body:
+    type: multipart-form
+    data:
+      - name: IDMhs
+        type: text
+        value: Kosong
+      - name: Nama
+        type: text
+        value: yogaaa
+      - name: Umur
+        type: text
+        value: "21"
+      - name: MyFoto1
+        type: text
+        value: JM.png
+      - name: MyFoto2
+        type: text
+        value: JM2.png
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: updateData
+    request:
+      url: http://localhost:8000/api.php?apicall=updateData
+      method: POST
+      params:
+        - name: apicall
+          value: updateData
+          type: query
+      body:
+        type: multipart-form
+        data:
+          - name: IDMhs
+            type: text
+            value: Kosong
+          - name: Nama
+            type: text
+            value: yogaaa
+          - name: Umur
+            type: text
+            value: "21"
+          - name: MyFoto1
+            type: text
+            value: JM.png
+          - name: MyFoto2
+            type: text
+            value: JM2.png
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: host
+          value: localhost:8000
+        - name: date
+          value: Wed, 20 May 2026 02:10:04 GMT
+        - name: connection
+          value: close
+        - name: x-powered-by
+          value: PHP/8.3.12
+        - name: content-type
+          value: text/html; charset=UTF-8
+      body:
+        type: html
+        data: '{"error":false,"message":"update success"}'
