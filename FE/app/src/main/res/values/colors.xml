@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background_gray">#EFEFEF</color>
+    <color name="stico_green">#00E676</color>
+    <color name="stico_orange">#FF9100</color>
+    <color name="border_black">#000000</color>
 </resources>
