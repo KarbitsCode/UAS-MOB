@@ -27,6 +27,12 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     true
                 }
+                R.id.menu_orders -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.hostFragment, OrdersFragmentActivity())
+                        .commit()
+                    true
+                }
                 else -> false
             }
         }
