@@ -5,12 +5,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.kantinapplication.utils.goingTo
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        // enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -18,6 +18,24 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        startActivity(goingTo<DashboardActivity>())
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.menu_home -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.hostFragment, DashboardFragmentActivity())
+                        .commit()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        // On first open
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.hostFragment, DashboardFragmentActivity())
+                .commit()
+        }
     }
 }
