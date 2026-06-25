@@ -33,6 +33,12 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     true
                 }
+                R.id.menu_inventory -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.hostFragment, InventoryFragmentActivity())
+                        .commit()
+                    true
+                }
                 else -> false
             }
         }
