@@ -64,4 +64,19 @@
         app:layout_constraintTop_toBottomOf="@id/headerDivider"
         tools:listitem="@layout/item_order" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addOrderFloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="Tambah Order Baru"
+        android:src="@android:drawable/ic_input_add"
+        app:fabSize="normal"
+        app:backgroundTint="@android:color/black"
+        app:rippleColor="#80FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@android:color/white"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Stico.Circle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
