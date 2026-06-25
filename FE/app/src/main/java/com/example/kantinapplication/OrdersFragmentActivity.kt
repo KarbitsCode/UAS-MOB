@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class OrdersFragmentActivity : Fragment() {
@@ -27,10 +28,8 @@ class OrdersFragmentActivity : Fragment() {
         // Starts here
         view.findViewById<FloatingActionButton>(R.id.addOrderFloatingActionButton).setOnClickListener {
             val dialog = LayoutInflater.from(context).inflate(R.layout.dialog_add_order, null)
-            val builder = AlertDialog.Builder(context)
-                .setView(dialog)
-                .create()
-            dialog.findViewById<View>(R.id.orderSaveActionButton).setOnClickListener {
+            val builder = AlertDialog.Builder(context).setView(dialog).create()
+            dialog.findViewById<Button>(R.id.orderSaveActionButton).setOnClickListener {
                 // TODO: insert ke database dan tampilkan ke ordersRecyclerView
                 // orderIdEditText, orderDetailsEditText
 

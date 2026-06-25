@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
     <ImageView
-        android:id="@+id/settingsImageView"
+        android:id="@+id/logoImageView"
         android:layout_width="40dp"
         android:layout_height="42dp"
         android:layout_marginStart="200dp"
