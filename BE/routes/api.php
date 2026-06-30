@@ -10,7 +10,14 @@ $db = $database->getConnection();
 
 $response = array();
 
-$resource = isset($_GET['resource']) ? $_GET['resource'] : 'mahasiswa';
+$resource = isset($_GET['resource']);
+
+if(!$resource) {
+    $response['error'] = true;
+    $response['message'] = 'Resource Not Found';
+    echo json_encode($response);
+    exit;
+}
 
 switch ($resource) {
     case 'dashboard':
