@@ -17,7 +17,7 @@ http:
     type: json
     data: |-
       {
-        "id_transaksi": 7
+        "id_transaksi": 10
       }
   auth: inherit
 

@@ -19,7 +19,7 @@ http:
       {
         "id_produk":4,
         "nama_produk": " baru update ",
-        "harga": 9,
+        "harga": 9000,
         "stok": 9
       }
   auth: inherit

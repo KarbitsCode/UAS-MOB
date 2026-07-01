@@ -17,11 +17,11 @@ http:
     type: json
     data: |-
       {
-        "no_nota": "TRX-006",
+        "no_nota": "TRX-008",
         "metode_pembayaran": "Tunai",
         "keterangan": "opsional",
-        "id_produk": 3,
-        "jumlah": 998
+        "id_produk": 4,
+        "jumlah": 2
       }
   auth: inherit
 

@@ -148,6 +148,7 @@ class PesananController {
 
     public function updateData() {
         require_once __DIR__ . '/../models/transaksi.php';
+        require_once __DIR__ . '/../models/keuangan.php';
 
         $requestData = $this->getRequestData();
         $id_transaksi = isset($requestData['id_transaksi']) ? trim((string) $requestData['id_transaksi']) : '';
@@ -160,24 +161,92 @@ class PesananController {
             );
         }
 
-        $transaksi = new Transaksi($this->conn);
-        $transaksi->id_transaksi = $id_transaksi;
+        try {
+            $transaksi = new Transaksi($this->conn);
+            $stmt = $transaksi->getDetailNota($id_transaksi);
+            $transactionData = $stmt->fetch();
 
-        $result = $transaksi->completeTransaction();
+            if (!$transactionData) {
+                return array(
+                    'error' => true,
+                    'message' => 'pesanan tidak ditemukan',
+                    'data' => $requestData
+                );
+            }
 
-        if ($result['error'] === false) {
+            if ($transactionData['status_pesanan'] !== 'Menunggu') {
+                return array(
+                    'error' => true,
+                    'message' => 'status pesanan sudah ' . $transactionData['status_pesanan'],
+                    'data' => $requestData
+                );
+            }
+
+            if ((int) $transactionData['stok'] < (int) $transactionData['jumlah_keluar']) {
+                return array(
+                    'error' => true,
+                    'message' => 'stok produk tidak cukup',
+                    'data' => $requestData
+                );
+            }
+
+            $this->conn->beginTransaction();
+
+            if (!$transaksi->updateStatus($id_transaksi, 'Selesai')) {
+                $this->conn->rollBack();
+                return array(
+                    'error' => true,
+                    'message' => 'gagal mengubah status pesanan',
+                    'data' => $requestData
+                );
+            }
+
+            if (!$transaksi->reduceStok($transactionData['id_produk'], $transactionData['jumlah_keluar'])) {
+                $this->conn->rollBack();
+                return array(
+                    'error' => true,
+                    'message' => 'stok produk tidak cukup',
+                    'data' => $requestData
+                );
+            }
+
+            $keuangan = new Keuangan($this->conn);
+            $keuangan->id_transaksi = $transactionData['id_transaksi'];
+            $keuangan->jenis = 'Pemasukan';
+            $keuangan->nominal = $transactionData['total_harga'];
+            $keuangan->keterangan = $transactionData['keterangan'];
+            $keuangan->catatKeuangan();
+
+            $this->conn->commit();
+
             return array(
                 'error' => false,
-                'message' => $result['message'],
-                'data' => $result['data']
+                'message' => 'update pesanan success',
+                'data' => array(
+                    'id_transaksi' => $transactionData['id_transaksi'],
+                    'no_nota' => $transactionData['no_nota'],
+                    'status_pesanan' => 'Selesai',
+                    'id_produk' => $transactionData['id_produk'],
+                    'nama_produk' => $transactionData['nama_produk'],
+                    'jumlah' => (int) $transactionData['jumlah_keluar'],
+                    'stok_tersisa' => (int) $transactionData['stok'] - (int) $transactionData['jumlah_keluar'],
+                    'total_harga' => $transactionData['total_harga'],
+                    'keterangan' => $transactionData['keterangan']
+                )
+            );
+        } catch (\PDOException $e) {
+            if ($this->conn->inTransaction()) {
+                $this->conn->rollBack();
+            }
+
+            error_log('Error Complete Transaksi: ' . $e->getMessage());
+
+            return array(
+                'error' => true,
+                'message' => 'update pesanan failed',
+                'data' => $requestData
             );
         }
-
-        return array(
-            'error' => true,
-            'message' => $result['message'],
-            'data' => $requestData
-        );
     }
 
     public function deleteData() {
