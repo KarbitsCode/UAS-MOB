@@ -15,9 +15,40 @@ class InventoryController {
     }
 
     public function insertData() {
+        require_once __DIR__ . '/../models/product.php';
+
+        $nama_produk = isset($_POST['nama_produk']) ? trim($_POST['nama_produk']) : '';
+        $harga = isset($_POST['harga']) ? trim($_POST['harga']) : '';
+        $stok = isset($_POST['stok']) ? trim($_POST['stok']) : '';
+
+        if ($nama_produk === '' || $harga === '' || $stok === '') {
+            return array(
+                'error' => true,
+                'message' => 'nama_produk, harga, dan stok wajib diisi',
+                'data' => $_POST
+            );
+        }
+
+        $produk = new Produk($this->conn);
+        $produk->nama_produk = $nama_produk;
+        $produk->harga = $harga;
+        $produk->stok = $stok;
+
+        if ($produk->create()) {
+            return array(
+                'error' => false,
+                'message' => 'insert inventory success',
+                'data' => array(
+                    'nama_produk' => $nama_produk,
+                    'harga' => $harga,
+                    'stok' => $stok
+                )
+            );
+        }
+
         return array(
-            'error' => false,
-            'message' => 'insert inventory success',
+            'error' => true,
+            'message' => 'insert inventory failed',
             'data' => $_POST
         );
     }
