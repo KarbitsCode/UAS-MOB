@@ -17,7 +17,7 @@ http:
     type: json
     data: |-
       {
-        "nama_produk": "isoplus",
+        "nama_produk": "baru",
         "harga": 8000,
         "stok": 20
       }
@@ -28,3 +28,42 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+examples:
+  - name: Create Product
+    description: Success
+    request:
+      url: "{{BACKEND_URL}}/index.php?resource=inventory&apicall=insertData"
+      method: POST
+      params:
+        - name: resource
+          value: inventory
+          type: query
+        - name: apicall
+          value: insertData
+          type: query
+      body:
+        type: json
+        data: |-
+          {
+            "nama_produk": "baru",
+            "harga": 8000,
+            "stok": 20
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: host
+          value: localhost:8000
+        - name: date
+          value: Wed, 01 Jul 2026 22:22:36 GMT
+        - name: connection
+          value: close
+        - name: x-powered-by
+          value: PHP/8.3.12
+        - name: content-type
+          value: text/html; charset=UTF-8
+      body:
+        type: html
+        data: '{"error":false,"message":"insert inventory success","data":{"nama_produk":"baru","harga":"8000","stok":"20"}}'

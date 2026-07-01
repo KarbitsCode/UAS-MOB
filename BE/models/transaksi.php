@@ -131,21 +131,21 @@ class Transaksi {
             $transactionData = $this->getById($this->id_transaksi);
             if (!$transactionData) {
                 return array(
-                    'success' => false,
+                    'error' => true,
                     'message' => 'pesanan tidak ditemukan'
                 );
             }
 
             if ($transactionData['status_pesanan'] !== 'Menunggu') {
                 return array(
-                    'success' => false,
+                    'error' => true,
                     'message' => 'status pesanan sudah ' . $transactionData['status_pesanan']
                 );
             }
 
             if ((int) $transactionData['stok'] < (int) $transactionData['jumlah_keluar']) {
                 return array(
-                    'success' => false,
+                    'error' => true,
                     'message' => 'stok produk tidak cukup'
                 );
             }
@@ -164,7 +164,7 @@ class Transaksi {
             if ($statusStmt->rowCount() === 0) {
                 $this->conn->rollBack();
                 return array(
-                    'success' => false,
+                    'error' => true,
                     'message' => 'gagal mengubah status pesanan'
                 );
             }
@@ -181,7 +181,7 @@ class Transaksi {
             if ($stockStmt->rowCount() === 0) {
                 $this->conn->rollBack();
                 return array(
-                    'success' => false,
+                    'error' => true,
                     'message' => 'stok produk tidak cukup'
                 );
             }
@@ -199,7 +199,7 @@ class Transaksi {
             $this->conn->commit();
 
             return array(
-                'success' => true,
+                'error' => false,
                 'message' => 'update pesanan success',
                 'data' => array(
                     'id_transaksi' => $transactionData['id_transaksi'],
@@ -221,7 +221,7 @@ class Transaksi {
             error_log('Error Complete Transaksi: ' . $e->getMessage());
 
             return array(
-                'success' => false,
+                'error' => true,
                 'message' => 'update pesanan failed'
             );
         }

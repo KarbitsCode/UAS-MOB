@@ -165,7 +165,7 @@ class PesananController {
 
         $result = $transaksi->completeTransaction();
 
-        if ($result['success']) {
+        if ($result['error'] === false) {
             return array(
                 'error' => false,
                 'message' => $result['message'],

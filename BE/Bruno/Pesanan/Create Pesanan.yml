@@ -17,11 +17,11 @@ http:
     type: json
     data: |-
       {
-        "no_nota": "TRX-004",
+        "no_nota": "TRX-006",
         "metode_pembayaran": "Tunai",
         "keterangan": "opsional",
-        "id_produk": 2,
-        "jumlah": 2
+        "id_produk": 3,
+        "jumlah": 998
       }
   auth: inherit
 
@@ -30,3 +30,44 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+examples:
+  - name: Create Pesanan
+    description: Success
+    request:
+      url: "{{BACKEND_URL}}/index.php?resource=pesanan&apicall=insertData"
+      method: POST
+      params:
+        - name: resource
+          value: pesanan
+          type: query
+        - name: apicall
+          value: insertData
+          type: query
+      body:
+        type: json
+        data: |-
+          {
+            "no_nota": "TRX-006",
+            "metode_pembayaran": "Tunai",
+            "keterangan": "opsional",
+            "id_produk": 3,
+            "jumlah": 998
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: host
+          value: localhost:8000
+        - name: date
+          value: Wed, 01 Jul 2026 22:19:24 GMT
+        - name: connection
+          value: close
+        - name: x-powered-by
+          value: PHP/8.3.12
+        - name: content-type
+          value: text/html; charset=UTF-8
+      body:
+        type: html
+        data: '{"error":false,"message":"insert pesanan success","data":{"no_nota":"TRX-006","metode_pembayaran":"Tunai","status_pesanan":"Menunggu","keterangan":"opsional","nama_produk":"update","harga":99999,"jumlah":998,"total_harga":99799002}}'

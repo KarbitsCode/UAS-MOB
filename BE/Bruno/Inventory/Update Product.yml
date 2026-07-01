@@ -17,10 +17,10 @@ http:
     type: json
     data: |-
       {
-        "id_produk":3,
-        "nama_produk": "update",
-        "harga": 99999,
-        "stok": 999
+        "id_produk":4,
+        "nama_produk": " baru update ",
+        "harga": 9,
+        "stok": 9
       }
   auth: inherit
 
@@ -29,3 +29,43 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+examples:
+  - name: Update Product
+    description: Success
+    request:
+      url: "{{BACKEND_URL}}/index.php?resource=inventory&apicall=updateData"
+      method: POST
+      params:
+        - name: resource
+          value: inventory
+          type: query
+        - name: apicall
+          value: updateData
+          type: query
+      body:
+        type: json
+        data: |-
+          {
+            "id_produk":4,
+            "nama_produk": " baru update ",
+            "harga": 9,
+            "stok": 9
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: host
+          value: localhost:8000
+        - name: date
+          value: Wed, 01 Jul 2026 22:23:33 GMT
+        - name: connection
+          value: close
+        - name: x-powered-by
+          value: PHP/8.3.12
+        - name: content-type
+          value: text/html; charset=UTF-8
+      body:
+        type: html
+        data: '{"error":false,"message":"update inventory success","data":{"id_produk":"4","nama_produk":"baru update","harga":"9","stok":"9"}}'
