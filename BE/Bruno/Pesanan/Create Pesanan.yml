@@ -1,7 +1,7 @@
 info:
   name: Create Pesanan
   type: http
-  seq: 1
+  seq: 2
 
 http:
   method: POST
@@ -17,10 +17,10 @@ http:
     type: json
     data: |-
       {
-        "no_nota": "TRX-001",
+        "no_nota": "TRX-002",
         "metode_pembayaran": "Tunai",
         "keterangan": "opsional",
-        "id_produk": 1,
+        "id_produk": 2,
         "jumlah": 2
       }
   auth: inherit

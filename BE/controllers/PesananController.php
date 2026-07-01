@@ -21,11 +21,47 @@ class PesananController {
     }
 
     public function loadData() {
-        return array(
-            'error' => false,
-            'message' => 'load pesanan success',
-            'data' => array()
-        );
+        require_once __DIR__ . '/../models/transaksi.php';
+
+        $requestData = $this->getRequestData();
+        $id_transaksi = isset($requestData['id_transaksi']) ? trim((string) $requestData['id_transaksi']) : '';
+
+        try {
+            $transaksi = new Transaksi($this->conn);
+
+            if ($id_transaksi !== '') {
+                $stmt = $transaksi->getDetailNota($id_transaksi);
+                $data = $stmt->fetchAll();
+
+                if (empty($data)) {
+                    return array(
+                        'error' => true,
+                        'message' => 'detail pesanan tidak ditemukan',
+                        'data' => array()
+                    );
+                }
+
+                return array(
+                    'error' => false,
+                    'message' => 'load detail pesanan success',
+                    'data' => $data
+                );
+            }
+
+            $stmt = $transaksi->getAll();
+
+            return array(
+                'error' => false,
+                'message' => 'load pesanan success',
+                'data' => $stmt->fetchAll()
+            );
+        } catch (\PDOException $e) {
+            return array(
+                'error' => true,
+                'message' => 'load pesanan failed',
+                'data' => array()
+            );
+        }
     }
 
     public function insertData() {
