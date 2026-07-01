@@ -1,18 +1,23 @@
 <?php
-class DashboardController {
+class DashboardController
+{
     private $conn;
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         $this->conn = $db;
     }
 
-    public function loadData() {
+    public function loadData()
+    {
         require_once __DIR__ . '/../models/dashboard.php';
+        require_once __DIR__ . '/../models/keuangan.php';
 
         try {
             $dashboard = new Dashboard($this->conn);
+            $keuangan = new Keuangan($this->conn);
 
-            $pendapatan = $dashboard->getPendapatanHariIni();
+            $pendapatan = $keuangan->getRingkasan()->fetchAll();
             $produkTerlaris = $dashboard->getProdukTerlaris();
             $stokMenipis = $dashboard->getStokMenipis();
             $jumlahMauHabis = $dashboard->getJumlahBarangMauHabis();
@@ -21,7 +26,7 @@ class DashboardController {
                 'error' => false,
                 'message' => 'load dashboard success',
                 'data' => array(
-                    'pendapatan_hari_ini' => (float) $pendapatan['total'],
+                    'pendapatan_hari_ini' => $pendapatan[0]['total'],
                     'produk_terlaris' => $produkTerlaris,
                     'stok_menipis' => $stokMenipis,
                     'jumlah_barang_mau_habis' => (int) $jumlahMauHabis['jumlah']
