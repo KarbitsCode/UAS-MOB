@@ -46,17 +46,6 @@ if ($controller === null) {
         case 'updateData':
             $response = $controller->updateData();
             break;
-        case 'deleteData':
-            $response = $controller->deleteData();
-            break;
-        case 'upload':
-            if (method_exists($controller, 'upload')) {
-                $response = $controller->upload();
-            } else {
-                $response['error'] = true;
-                $response['message'] = 'Upload not available for this resource';
-            }
-            break;
         default:
             $response['error'] = true;
             $response['message'] = 'Invalid Operation Called';
