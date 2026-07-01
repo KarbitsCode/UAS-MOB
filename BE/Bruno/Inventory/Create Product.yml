@@ -1,5 +1,5 @@
 info:
-  name: Create New Product
+  name: Create Product
   type: http
   seq: 2
 
@@ -14,17 +14,13 @@ http:
       value: insertData
       type: query
   body:
-    type: multipart-form
-    data:
-      - name: nama_produk
-        type: text
-        value: Pocari
-      - name: harga
-        type: text
-        value: "7000"
-      - name: stok
-        type: text
-        value: "10"
+    type: json
+    data: |-
+      {
+        "nama_produk": "isoplus",
+        "harga": 8000,
+        "stok": 20
+      }
   auth: inherit
 
 settings:

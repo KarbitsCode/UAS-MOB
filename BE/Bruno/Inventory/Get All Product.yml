@@ -13,14 +13,6 @@ http:
     - name: apicall
       value: loadData
       type: query
-  body:
-    type: json
-    data: |-
-      {
-        "nama_produk":"entah2",
-        "harga":2600,
-        "stok":3
-      }
   auth: inherit
 
 settings:
