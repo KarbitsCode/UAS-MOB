@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Spinner
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class OrdersFragmentActivity : Fragment() {
@@ -35,6 +37,24 @@ class OrdersFragmentActivity : Fragment() {
 
                 builder.dismiss()
             }
+
+            // TODO: populasikan data dari db ke spinner
+            // Example
+            val listMenuKantin = listOf(
+                "Nasi Goreng Spesial - Rp15.000",
+                "Es Teh Manis - Rp5.000",
+                "Ayam Geprek - Rp18.000"
+            )
+
+            val adapter = ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                listMenuKantin
+            )
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            val productSpinner = dialog.findViewById<Spinner>(R.id.productSpinner)
+            productSpinner.adapter = adapter
+
             builder.show()
         }
     }

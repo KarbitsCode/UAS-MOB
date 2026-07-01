@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="20dp"
@@ -48,25 +48,83 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Detail Pesanan Makanan"
+        android:text="Pilih Menu Makanan / Minuman"
         android:textColor="@android:color/black"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/orderIdEditText"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Spinner
+        android:id="@+id/productSpinner"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/bg_card_brutalism"
+        tools:listitem="@android:layout/simple_spinner_item"
+        app:layout_constraintTop_toBottomOf="@id/textView14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/quantityEditText" />
+
     <EditText
-        android:id="@+id/orderDetailsEditText"
+        android:id="@+id/quantityEditText"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:hint="Qty"
+        android:inputType="number"
+        android:gravity="center"
+        android:background="@drawable/bg_card_brutalism"
+        app:layout_constraintBottom_toBottomOf="@id/productSpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/productSpinner" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Metode Pembayaran"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/productSpinner"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/paymentSpinner"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/bg_card_brutalism"
+        android:entries="@array/payment_methods_array"
+        tools:listitem="@android:layout/simple_spinner_item"
+        app:layout_constraintTop_toBottomOf="@id/textView18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Keterangan Tambahan"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/paymentSpinner"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/notesEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:hint="Contoh:\n2x Nasi Goreng\n1x Es Teh"
+        android:hint="Contoh: Nasi Goreng pedas manis, Es teh dipisah plastik"
         android:inputType="textMultiLine"
         android:gravity="top"
-        android:lines="4"
+        android:lines="2"
         android:background="@drawable/bg_card_brutalism"
         android:padding="12dp"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/textView14"
+        app:layout_constraintTop_toBottomOf="@id/textView19"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -74,12 +132,12 @@
         android:id="@+id/orderSaveActionButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:text="SIMPAN PESANAN"
         android:backgroundTint="@android:color/black"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/orderDetailsEditText"
+        app:layout_constraintTop_toBottomOf="@id/notesEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
