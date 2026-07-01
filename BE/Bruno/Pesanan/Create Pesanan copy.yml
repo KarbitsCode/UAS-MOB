@@ -1,0 +1,32 @@
+info:
+  name: Create Pesanan copy
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{BACKEND_URL}}/index.php?resource=pesanan&apicall=insertData"
+  params:
+    - name: resource
+      value: pesanan
+      type: query
+    - name: apicall
+      value: insertData
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "no_nota": "TRX-001",
+        "metode_pembayaran": "Tunai",
+        "keterangan": "opsional",
+        "id_produk": 1,
+        "jumlah": 2
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

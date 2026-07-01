@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../controllers/MahasiswaController.php';
 require_once __DIR__ . '/../controllers/DashboardController.php';
 require_once __DIR__ . '/../controllers/PesananController.php';
 require_once __DIR__ . '/../controllers/InventoryController.php';
