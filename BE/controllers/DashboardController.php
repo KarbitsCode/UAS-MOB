@@ -35,29 +35,5 @@ class DashboardController {
             );
         }
     }
-
-    public function insertData() {
-        return array(
-            'error' => false,
-            'message' => 'insert dashboard success',
-            'data' => $_POST
-        );
-    }
-
-    public function updateData() {
-        return array(
-            'error' => false,
-            'message' => 'update dashboard success',
-            'data' => $_POST
-        );
-    }
-
-    public function deleteData() {
-        return array(
-            'error' => false,
-            'message' => 'delete dashboard success',
-            'data' => $_POST
-        );
-    }
 }
 ?>

@@ -1,12 +1,15 @@
 <?php
-class PesananController {
+class PesananController
+{
     private $conn;
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         $this->conn = $db;
     }
 
-    private function getRequestData() {
+    private function getRequestData()
+    {
         if (!empty($_POST)) {
             return $_POST;
         }
@@ -20,7 +23,8 @@ class PesananController {
         return is_array($jsonData) ? $jsonData : array();
     }
 
-    public function loadData() {
+    public function loadData()
+    {
         require_once __DIR__ . '/../models/transaksi.php';
 
         $requestData = $this->getRequestData();
@@ -64,7 +68,8 @@ class PesananController {
         }
     }
 
-    public function insertData() {
+    public function insertData()
+    {
         require_once __DIR__ . '/../models/transaksi.php';
         require_once __DIR__ . '/../models/product.php';
 
@@ -146,7 +151,8 @@ class PesananController {
         );
     }
 
-    public function updateData() {
+    public function updateData()
+    {
         require_once __DIR__ . '/../models/transaksi.php';
         require_once __DIR__ . '/../models/keuangan.php';
 
@@ -247,14 +253,6 @@ class PesananController {
                 'data' => $requestData
             );
         }
-    }
-
-    public function deleteData() {
-        return array(
-            'error' => false,
-            'message' => 'delete pesanan success',
-            'data' => $_POST
-        );
     }
 }
 ?>

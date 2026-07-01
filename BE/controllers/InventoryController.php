@@ -1,12 +1,15 @@
 <?php
-class InventoryController {
+class InventoryController
+{
     private $conn;
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         $this->conn = $db;
     }
 
-    private function getRequestData() {
+    private function getRequestData()
+    {
         if (!empty($_POST)) {
             return $_POST;
         }
@@ -20,7 +23,8 @@ class InventoryController {
         return is_array($jsonData) ? $jsonData : array();
     }
 
-    public function loadData() {
+    public function loadData()
+    {
         require_once __DIR__ . '/../models/product.php';
 
         try {
@@ -41,7 +45,8 @@ class InventoryController {
         }
     }
 
-    public function insertData() {
+    public function insertData()
+    {
         require_once __DIR__ . '/../models/product.php';
 
         $requestData = $this->getRequestData();
@@ -82,7 +87,8 @@ class InventoryController {
         );
     }
 
-    public function updateData() {
+    public function updateData()
+    {
         require_once __DIR__ . '/../models/product.php';
 
         $requestData = $this->getRequestData();
@@ -123,14 +129,6 @@ class InventoryController {
             'error' => true,
             'message' => 'update inventory failed',
             'data' => $requestData
-        );
-    }
-
-    public function deleteData() {
-        return array(
-            'error' => false,
-            'message' => 'delete inventory success',
-            'data' => $_POST
         );
     }
 }
