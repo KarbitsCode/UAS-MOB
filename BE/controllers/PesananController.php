@@ -196,10 +196,8 @@ class PesananController
                 );
             }
 
-            $this->conn->beginTransaction();
 
             if (!$transaksi->updateStatus($id_transaksi, 'Selesai')) {
-                $this->conn->rollBack();
                 return array(
                     'error' => true,
                     'message' => 'gagal mengubah status pesanan',
@@ -208,7 +206,6 @@ class PesananController
             }
 
             if (!$transaksi->reduceStok($transactionData['id_produk'], $transactionData['jumlah_keluar'])) {
-                $this->conn->rollBack();
                 return array(
                     'error' => true,
                     'message' => 'stok produk tidak cukup',
@@ -222,9 +219,6 @@ class PesananController
             $keuangan->nominal = $transactionData['total_harga'];
             $keuangan->keterangan = $transactionData['keterangan'];
             $keuangan->catatKeuangan();
-
-            $this->conn->commit();
-
             return array(
                 'error' => false,
                 'message' => 'update pesanan success',
@@ -241,10 +235,6 @@ class PesananController
                 )
             );
         } catch (\PDOException $e) {
-            if ($this->conn->inTransaction()) {
-                $this->conn->rollBack();
-            }
-
             error_log('Error Complete Transaksi: ' . $e->getMessage());
 
             return array(
