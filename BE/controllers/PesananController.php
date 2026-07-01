@@ -147,10 +147,36 @@ class PesananController {
     }
 
     public function updateData() {
+        require_once __DIR__ . '/../models/transaksi.php';
+
+        $requestData = $this->getRequestData();
+        $id_transaksi = isset($requestData['id_transaksi']) ? trim((string) $requestData['id_transaksi']) : '';
+
+        if ($id_transaksi === '') {
+            return array(
+                'error' => true,
+                'message' => 'id_transaksi wajib diisi',
+                'data' => $requestData
+            );
+        }
+
+        $transaksi = new Transaksi($this->conn);
+        $transaksi->id_transaksi = $id_transaksi;
+
+        $result = $transaksi->completeTransaction();
+
+        if ($result['success']) {
+            return array(
+                'error' => false,
+                'message' => $result['message'],
+                'data' => $result['data']
+            );
+        }
+
         return array(
-            'error' => false,
-            'message' => 'update pesanan success',
-            'data' => $_POST
+            'error' => true,
+            'message' => $result['message'],
+            'data' => $requestData
         );
     }
 
