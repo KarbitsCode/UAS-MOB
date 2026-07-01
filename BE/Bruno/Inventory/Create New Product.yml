@@ -1,26 +1,30 @@
 info:
   name: Create New Product
   type: http
-  seq: 1
+  seq: 2
 
 http:
   method: POST
-  url: "{{BACKEND_URL}}/index.php?resource=inventory&apicall=loadData"
+  url: "{{BACKEND_URL}}/index.php?resource=inventory&apicall=insertData"
   params:
     - name: resource
       value: inventory
       type: query
     - name: apicall
-      value: loadData
+      value: insertData
       type: query
   body:
-    type: json
-    data: |-
-      {
-        "nama_produk":"entah2",
-        "harga":2600,
-        "stok":3
-      }
+    type: multipart-form
+    data:
+      - name: nama_produk
+        type: text
+        value: Pocari
+      - name: harga
+        type: text
+        value: "7000"
+      - name: stok
+        type: text
+        value: "10"
   auth: inherit
 
 settings:

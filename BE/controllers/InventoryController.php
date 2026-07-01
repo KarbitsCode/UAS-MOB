@@ -7,11 +7,24 @@ class InventoryController {
     }
 
     public function loadData() {
-        return array(
-            'error' => false,
-            'message' => 'load inventory success',
-            'data' => array()
-        );
+        require_once __DIR__ . '/../models/product.php';
+
+        try {
+            $produk = new Produk($this->conn);
+            $stmt = $produk->getAll();
+
+            return array(
+                'error' => false,
+                'message' => 'load inventory success',
+                'data' => $stmt->fetchAll()
+            );
+        } catch (\PDOException $e) {
+            return array(
+                'error' => true,
+                'message' => 'load inventory failed',
+                'data' => array()
+            );
+        }
     }
 
     public function insertData() {
