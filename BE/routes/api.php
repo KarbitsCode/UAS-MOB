@@ -1,18 +1,16 @@
 <?php
 require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../controllers/MahasiswaController.php';
 require_once __DIR__ . '/../controllers/DashboardController.php';
 require_once __DIR__ . '/../controllers/PesananController.php';
 require_once __DIR__ . '/../controllers/InventoryController.php';
 
-$database = new Database();
-$db = $database->getConnection();
+$db = $pdo;
 
 $response = array();
 
-$resource = isset($_GET['resource']);
+$resource = $_GET['resource'] ?? '';
 
-if(!$resource) {
+if (!$resource) {
     $response['error'] = true;
     $response['message'] = 'Resource Not Found';
     echo json_encode($response);
@@ -47,17 +45,6 @@ if ($controller === null) {
             break;
         case 'updateData':
             $response = $controller->updateData();
-            break;
-        case 'deleteData':
-            $response = $controller->deleteData();
-            break;
-        case 'upload':
-            if (method_exists($controller, 'upload')) {
-                $response = $controller->upload();
-            } else {
-                $response['error'] = true;
-                $response['message'] = 'Upload not available for this resource';
-            }
             break;
         default:
             $response['error'] = true;

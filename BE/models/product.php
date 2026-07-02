@@ -25,6 +25,19 @@ class Produk {
         return $stmt;
     }
 
+    public function getById($id_produk) {
+        $query = "SELECT id_produk, nama_produk, harga, stok
+                  FROM " . $this->table_name . "
+                  WHERE id_produk = :id_produk
+                  LIMIT 1";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_produk', $id_produk);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     // create
     public function create() {
         $query = "INSERT INTO " . $this->table_name . " (nama_produk, harga, stok) 

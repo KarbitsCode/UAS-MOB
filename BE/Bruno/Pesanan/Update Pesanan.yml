@@ -1,0 +1,65 @@
+info:
+  name: Update Pesanan
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{BACKEND_URL}}/index.php?resource=pesanan&apicall=updateData"
+  params:
+    - name: resource
+      value: pesanan
+      type: query
+    - name: apicall
+      value: updateData
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "id_transaksi": 10
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Update Pesanan
+    description: Success
+    request:
+      url: "{{BACKEND_URL}}/index.php?resource=pesanan&apicall=updateData"
+      method: POST
+      params:
+        - name: resource
+          value: pesanan
+          type: query
+        - name: apicall
+          value: updateData
+          type: query
+      body:
+        type: json
+        data: |-
+          {
+            "id_transaksi": 7
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: host
+          value: localhost:8000
+        - name: date
+          value: Wed, 01 Jul 2026 22:19:59 GMT
+        - name: connection
+          value: close
+        - name: x-powered-by
+          value: PHP/8.3.12
+        - name: content-type
+          value: text/html; charset=UTF-8
+      body:
+        type: html
+        data: '{"error":false,"message":"update pesanan success","data":{"id_transaksi":7,"no_nota":"TRX-006","status_pesanan":"Selesai","id_produk":3,"nama_produk":"update","jumlah":998,"stok_tersisa":1,"total_harga":99799002,"keterangan":"opsional"}}'

@@ -1,0 +1,831 @@
+{
+  "info": {
+    "name": "Bruno",
+    "description": null,
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Inventory",
+      "item": [
+        {
+          "name": "Get All Product",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}/index.php?resource=inventory&apicall=loadData",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}"
+              ],
+              "path": [
+                "index.php?resource=inventory&apicall=loadData"
+              ],
+              "query": [
+                {
+                  "key": "resource",
+                  "value": "inventory"
+                },
+                {
+                  "key": "apicall",
+                  "value": "loadData"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Product",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BACKEND_URL}}/index.php?resource=inventory&apicall=loadData",
+                  "protocol": "",
+                  "host": [
+                    "{{BACKEND_URL}}"
+                  ],
+                  "path": [
+                    "index.php?resource=inventory&apicall=loadData"
+                  ],
+                  "query": [
+                    {
+                      "key": "resource",
+                      "value": "inventory"
+                    },
+                    {
+                      "key": "apicall",
+                      "value": "loadData"
+                    }
+                  ],
+                  "variable": []
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000",
+                  "name": "host",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 01 Jul 2026 22:20:48 GMT",
+                  "name": "date",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "connection",
+                  "value": "close",
+                  "name": "connection",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.3.12",
+                  "name": "x-powered-by",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "content-type",
+                  "value": "text/html; charset=UTF-8",
+                  "name": "content-type",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"error\":false,\"message\":\"load inventory success\",\"data\":[{\"id_produk\":3,\"nama_produk\":\"update\",\"harga\":99999,\"stok\":1},{\"id_produk\":2,\"nama_produk\":\"isoplus\",\"harga\":8000,\"stok\":4},{\"id_produk\":1,\"nama_produk\":\"Pocari\",\"harga\":7000,\"stok\":8}]}",
+              "_postman_previewlanguage": "html"
+            }
+          ]
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}/index.php?resource=inventory&apicall=insertData",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}"
+              ],
+              "path": [
+                "index.php?resource=inventory&apicall=insertData"
+              ],
+              "query": [
+                {
+                  "key": "resource",
+                  "value": "inventory"
+                },
+                {
+                  "key": "apicall",
+                  "value": "insertData"
+                }
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nama_produk\": \"baru\",\n  \"harga\": 8000,\n  \"stok\": 20\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "Create Product",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{BACKEND_URL}}/index.php?resource=inventory&apicall=insertData",
+                  "protocol": "",
+                  "host": [
+                    "{{BACKEND_URL}}"
+                  ],
+                  "path": [
+                    "index.php?resource=inventory&apicall=insertData"
+                  ],
+                  "query": [
+                    {
+                      "key": "resource",
+                      "value": "inventory"
+                    },
+                    {
+                      "key": "apicall",
+                      "value": "insertData"
+                    }
+                  ],
+                  "variable": []
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nama_produk\": \"baru\",\n  \"harga\": 8000,\n  \"stok\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000",
+                  "name": "host",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 01 Jul 2026 22:22:36 GMT",
+                  "name": "date",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "connection",
+                  "value": "close",
+                  "name": "connection",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.3.12",
+                  "name": "x-powered-by",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "content-type",
+                  "value": "text/html; charset=UTF-8",
+                  "name": "content-type",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"error\":false,\"message\":\"insert inventory success\",\"data\":{\"nama_produk\":\"baru\",\"harga\":\"8000\",\"stok\":\"20\"}}",
+              "_postman_previewlanguage": "html"
+            }
+          ]
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}/index.php?resource=inventory&apicall=updateData",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}"
+              ],
+              "path": [
+                "index.php?resource=inventory&apicall=updateData"
+              ],
+              "query": [
+                {
+                  "key": "resource",
+                  "value": "inventory"
+                },
+                {
+                  "key": "apicall",
+                  "value": "updateData"
+                }
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_produk\":4,\n  \"nama_produk\": \" baru update \",\n  \"harga\": 9000,\n  \"stok\": 9\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "Update Product",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{BACKEND_URL}}/index.php?resource=inventory&apicall=updateData",
+                  "protocol": "",
+                  "host": [
+                    "{{BACKEND_URL}}"
+                  ],
+                  "path": [
+                    "index.php?resource=inventory&apicall=updateData"
+                  ],
+                  "query": [
+                    {
+                      "key": "resource",
+                      "value": "inventory"
+                    },
+                    {
+                      "key": "apicall",
+                      "value": "updateData"
+                    }
+                  ],
+                  "variable": []
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id_produk\":4,\n  \"nama_produk\": \" baru update \",\n  \"harga\": 9,\n  \"stok\": 9\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000",
+                  "name": "host",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 01 Jul 2026 22:23:33 GMT",
+                  "name": "date",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "connection",
+                  "value": "close",
+                  "name": "connection",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.3.12",
+                  "name": "x-powered-by",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "content-type",
+                  "value": "text/html; charset=UTF-8",
+                  "name": "content-type",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"error\":false,\"message\":\"update inventory success\",\"data\":{\"id_produk\":\"4\",\"nama_produk\":\"baru update\",\"harga\":\"9\",\"stok\":\"9\"}}",
+              "_postman_previewlanguage": "html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pesanan",
+      "item": [
+        {
+          "name": "Get All Pesanan",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}/index.php?resource=pesanan&apicall=loadData",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}"
+              ],
+              "path": [
+                "index.php?resource=pesanan&apicall=loadData"
+              ],
+              "query": [
+                {
+                  "key": "resource",
+                  "value": "pesanan"
+                },
+                {
+                  "key": "apicall",
+                  "value": "loadData"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Pesanan",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BACKEND_URL}}/index.php?resource=pesanan&apicall=loadData",
+                  "protocol": "",
+                  "host": [
+                    "{{BACKEND_URL}}"
+                  ],
+                  "path": [
+                    "index.php?resource=pesanan&apicall=loadData"
+                  ],
+                  "query": [
+                    {
+                      "key": "resource",
+                      "value": "pesanan"
+                    },
+                    {
+                      "key": "apicall",
+                      "value": "loadData"
+                    }
+                  ],
+                  "variable": []
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000",
+                  "name": "host",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 01 Jul 2026 22:17:52 GMT",
+                  "name": "date",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "connection",
+                  "value": "close",
+                  "name": "connection",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.3.12",
+                  "name": "x-powered-by",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "content-type",
+                  "value": "text/html; charset=UTF-8",
+                  "name": "content-type",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"error\":false,\"message\":\"load pesanan success\",\"data\":[{\"id_transaksi\":6,\"no_nota\":\"TRX-005\",\"tanggal\":\"2026-07-01 15:07:43.36136+00\",\"total_harga\":80000,\"metode_pembayaran\":\"Tunai\",\"status_pesanan\":\"Selesai\",\"keterangan\":\"opsional\",\"id_produk\":2,\"jumlah_keluar\":10,\"subtotal\":80000,\"nama_produk\":\"isoplus\",\"harga\":8000},{\"id_transaksi\":4,\"no_nota\":\"TRX-004\",\"tanggal\":\"2026-07-01 12:24:43.324232+00\",\"total_harga\":16000,\"metode_pembayaran\":\"Tunai\",\"status_pesanan\":\"Selesai\",\"keterangan\":\"opsional\",\"id_produk\":2,\"jumlah_keluar\":2,\"subtotal\":16000,\"nama_produk\":\"isoplus\",\"harga\":8000},{\"id_transaksi\":3,\"no_nota\":\"TRX-003\",\"tanggal\":\"2026-07-01 12:20:44.419953+00\",\"total_harga\":16000,\"metode_pembayaran\":\"Tunai\",\"status_pesanan\":\"Selesai\",\"keterangan\":\"opsional\",\"id_produk\":2,\"jumlah_keluar\":2,\"subtotal\":16000,\"nama_produk\":\"isoplus\",\"harga\":8000},{\"id_transaksi\":2,\"no_nota\":\"TRX-002\",\"tanggal\":\"2026-07-01 11:50:06.503464+00\",\"total_harga\":16000,\"metode_pembayaran\":\"Tunai\",\"status_pesanan\":\"Selesai\",\"keterangan\":\"opsional\",\"id_produk\":2,\"jumlah_keluar\":2,\"subtotal\":16000,\"nama_produk\":\"isoplus\",\"harga\":8000},{\"id_transaksi\":1,\"no_nota\":\"TRX-001\",\"tanggal\":\"2026-07-01 11:23:34.856774+00\",\"total_harga\":14000,\"metode_pembayaran\":\"Tunai\",\"status_pesanan\":\"Selesai\",\"keterangan\":\"opsional\",\"id_produk\":1,\"jumlah_keluar\":2,\"subtotal\":14000,\"nama_produk\":\"Pocari\",\"harga\":7000}]}",
+              "_postman_previewlanguage": "html"
+            }
+          ]
+        },
+        {
+          "name": "Create Pesanan",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}/index.php?resource=pesanan&apicall=insertData",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}"
+              ],
+              "path": [
+                "index.php?resource=pesanan&apicall=insertData"
+              ],
+              "query": [
+                {
+                  "key": "resource",
+                  "value": "pesanan"
+                },
+                {
+                  "key": "apicall",
+                  "value": "insertData"
+                }
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"no_nota\": \"TRX-008\",\n  \"metode_pembayaran\": \"Tunai\",\n  \"keterangan\": \"opsional\",\n  \"id_produk\": 4,\n  \"jumlah\": 2\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "Create Pesanan",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{BACKEND_URL}}/index.php?resource=pesanan&apicall=insertData",
+                  "protocol": "",
+                  "host": [
+                    "{{BACKEND_URL}}"
+                  ],
+                  "path": [
+                    "index.php?resource=pesanan&apicall=insertData"
+                  ],
+                  "query": [
+                    {
+                      "key": "resource",
+                      "value": "pesanan"
+                    },
+                    {
+                      "key": "apicall",
+                      "value": "insertData"
+                    }
+                  ],
+                  "variable": []
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"no_nota\": \"TRX-006\",\n  \"metode_pembayaran\": \"Tunai\",\n  \"keterangan\": \"opsional\",\n  \"id_produk\": 3,\n  \"jumlah\": 998\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000",
+                  "name": "host",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 01 Jul 2026 22:19:24 GMT",
+                  "name": "date",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "connection",
+                  "value": "close",
+                  "name": "connection",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.3.12",
+                  "name": "x-powered-by",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "content-type",
+                  "value": "text/html; charset=UTF-8",
+                  "name": "content-type",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"error\":false,\"message\":\"insert pesanan success\",\"data\":{\"no_nota\":\"TRX-006\",\"metode_pembayaran\":\"Tunai\",\"status_pesanan\":\"Menunggu\",\"keterangan\":\"opsional\",\"nama_produk\":\"update\",\"harga\":99999,\"jumlah\":998,\"total_harga\":99799002}}",
+              "_postman_previewlanguage": "html"
+            }
+          ]
+        },
+        {
+          "name": "Update Pesanan",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}/index.php?resource=pesanan&apicall=updateData",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}"
+              ],
+              "path": [
+                "index.php?resource=pesanan&apicall=updateData"
+              ],
+              "query": [
+                {
+                  "key": "resource",
+                  "value": "pesanan"
+                },
+                {
+                  "key": "apicall",
+                  "value": "updateData"
+                }
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_transaksi\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "Update Pesanan",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{BACKEND_URL}}/index.php?resource=pesanan&apicall=updateData",
+                  "protocol": "",
+                  "host": [
+                    "{{BACKEND_URL}}"
+                  ],
+                  "path": [
+                    "index.php?resource=pesanan&apicall=updateData"
+                  ],
+                  "query": [
+                    {
+                      "key": "resource",
+                      "value": "pesanan"
+                    },
+                    {
+                      "key": "apicall",
+                      "value": "updateData"
+                    }
+                  ],
+                  "variable": []
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id_transaksi\": 7\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000",
+                  "name": "host",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 01 Jul 2026 22:19:59 GMT",
+                  "name": "date",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "connection",
+                  "value": "close",
+                  "name": "connection",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.3.12",
+                  "name": "x-powered-by",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "content-type",
+                  "value": "text/html; charset=UTF-8",
+                  "name": "content-type",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"error\":false,\"message\":\"update pesanan success\",\"data\":{\"id_transaksi\":7,\"no_nota\":\"TRX-006\",\"status_pesanan\":\"Selesai\",\"id_produk\":3,\"nama_produk\":\"update\",\"jumlah\":998,\"stok_tersisa\":1,\"total_harga\":99799002,\"keterangan\":\"opsional\"}}",
+              "_postman_previewlanguage": "html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Get Data Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "{{BACKEND_URL}}/index.php?resource=dashboard&apicall=loadData",
+              "protocol": "",
+              "host": [
+                "{{BACKEND_URL}}"
+              ],
+              "path": [
+                "index.php?resource=dashboard&apicall=loadData"
+              ],
+              "query": [
+                {
+                  "key": "resource",
+                  "value": "dashboard"
+                },
+                {
+                  "key": "apicall",
+                  "value": "loadData"
+                }
+              ],
+              "variable": []
+            }
+          },
+          "response": [
+            {
+              "name": "Get Data Dashboard",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{BACKEND_URL}}/index.php?resource=dashboard&apicall=loadData",
+                  "protocol": "",
+                  "host": [
+                    "{{BACKEND_URL}}"
+                  ],
+                  "path": [
+                    "index.php?resource=dashboard&apicall=loadData"
+                  ],
+                  "query": [
+                    {
+                      "key": "resource",
+                      "value": "dashboard"
+                    },
+                    {
+                      "key": "apicall",
+                      "value": "loadData"
+                    }
+                  ],
+                  "variable": []
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000",
+                  "name": "host",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "date",
+                  "value": "Wed, 01 Jul 2026 22:15:52 GMT",
+                  "name": "date",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "connection",
+                  "value": "close",
+                  "name": "connection",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.3.12",
+                  "name": "x-powered-by",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "content-type",
+                  "value": "text/html; charset=UTF-8",
+                  "name": "content-type",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [],
+              "body": "{\"error\":false,\"message\":\"load dashboard success\",\"data\":{\"pendapatan_hari_ini\":126000,\"produk_terlaris\":[{\"nama_produk\":\"isoplus\",\"jumlah_terjual\":16},{\"nama_produk\":\"Pocari\",\"jumlah_terjual\":2}],\"stok_menipis\":[{\"nama_produk\":\"isoplus\",\"stok\":4},{\"nama_produk\":\"Pocari\",\"stok\":8}],\"jumlah_barang_mau_habis\":2}}",
+              "_postman_previewlanguage": "html"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "BACKEND_URL",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
