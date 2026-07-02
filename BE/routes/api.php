@@ -8,7 +8,7 @@ $db = $pdo;
 
 $response = array();
 
-$resource = $_GET['resource'];
+$resource = $_GET['resource'] ?? '';
 
 if (!$resource) {
     $response['error'] = true;
